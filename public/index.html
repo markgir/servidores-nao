@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor de Servidores</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left panel: Logo -->
+    <div class="panel-left">
+      <div class="logo-wrapper">
+        <img src="https://www.gnr.pt/layout/gnr_frontcontent_1.png" alt="Logo GNR" class="logo" />
+      </div>
+    </div>
+
+    <!-- Right panel: Server list and controls -->
+    <div class="panel-right">
+      <div class="panel-right-inner">
+        <h1 class="title">Monitor de Servidores</h1>
+
+        <!-- Add server form -->
+        <div class="add-server-form">
+          <input type="text" id="server-name" placeholder="Nome do servidor" />
+          <input type="text" id="server-host" placeholder="IP ou domínio (ex: 192.168.1.1 ou example.dyndns.org)" />
+          <button id="btn-add" title="Adicionar servidor">+ Adicionar</button>
+        </div>
+
+        <!-- Server list -->
+        <div id="server-list" class="server-list">
+          <div class="empty-state">Nenhum servidor adicionado. Adicione um acima.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

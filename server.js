@@ -1,11 +1,18 @@
 const express = require('express');
 const path = require('path');
+const rateLimit = require('express-rate-limit');
 const { getAllServers, addServer, removeServer, getServer } = require('./data/store');
 const { pingHost } = require('./services/ping');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minute
+  max: 100
+});
+
+app.use(limiter);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -21,6 +21,7 @@
   "homepage": "https://github.com/markgir/servidores-nao#readme",
   "dependencies": {
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
     "ping": "^1.0.0",
     "uuid": "^13.0.0"
   }

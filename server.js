@@ -18,7 +18,7 @@ app.get('/api/servers', (req, res) => {
 // API: Add a server
 app.post('/api/servers', (req, res) => {
   const { name, host } = req.body;
-  if (!name || !host) {
+  if (!name || !host || !name.trim() || !host.trim()) {
     return res.status(400).json({ error: 'Name and host are required' });
   }
   const server = addServer(name, host);

@@ -117,7 +117,7 @@ function renderServerList(servers) {
         <div class="server-actions">
           <span class="ping-time" data-ping-time="${s.id}">--</span>
           <div class="status-light unknown" data-status="${s.id}"></div>
-          <button class="btn-delete" onclick="deleteServer('${s.id}')" title="Remover servidor">✕</button>
+          <button class="btn-delete" data-delete-id="${s.id}" title="Remover servidor">✕</button>
         </div>
       </div>
       <div class="heartbeat-container">
@@ -128,8 +128,12 @@ function renderServerList(servers) {
     )
     .join('');
 
-  // Initialize canvases
+  // Attach delete event listeners
   servers.forEach((s) => {
+    const btn = serverListEl.querySelector(`[data-delete-id="${s.id}"]`);
+    if (btn) {
+      btn.addEventListener('click', () => deleteServer(s.id));
+    }
     if (!pingHistory[s.id]) {
       pingHistory[s.id] = [];
     }
@@ -147,7 +151,7 @@ function updateServerStatus(id, alive, time) {
   // Update ping time display
   const timeEl = document.querySelector(`[data-ping-time="${id}"]`);
   if (timeEl) {
-    timeEl.textContent = alive && time !== null ? `${time.toFixed(1)} ms` : '--';
+    timeEl.textContent = alive && time != null ? `${Number(time).toFixed(1)} ms` : '--';
   }
 
   // Update ping history
